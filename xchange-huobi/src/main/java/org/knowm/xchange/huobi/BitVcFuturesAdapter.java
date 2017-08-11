@@ -32,74 +32,74 @@ import org.knowm.xchange.huobi.dto.trade.BitVcFuturesPosition;
 import org.knowm.xchange.huobi.dto.trade.BitVcFuturesPositionByContract;
 
 public class BitVcFuturesAdapter {
-  private static final OpenOrders NO_OPEN_ORDERS = new OpenOrders(Collections.EMPTY_LIST);
-  private static final Balance ZERO_USD_BALANCE = new Balance(USD, BigDecimal.ZERO);
-  private static final Balance ZERO_LTC_BALANCE = new Balance(LTC, BigDecimal.ZERO);
+    private static final OpenOrders NO_OPEN_ORDERS = new OpenOrders(Collections.EMPTY_LIST);
+    private static final Balance ZERO_USD_BALANCE = new Balance(USD, BigDecimal.ZERO);
+    private static final Balance ZERO_LTC_BALANCE = new Balance(LTC, BigDecimal.ZERO);
 
-  public static Ticker adaptTicker(BitVcFuturesTicker ticker, CurrencyPair currencyPair) {
+    public static Ticker adaptTicker(BitVcFuturesTicker ticker, CurrencyPair currencyPair) {
 
-    return new Ticker.Builder().currencyPair(currencyPair).last(ticker.getLast()).bid(ticker.getBuy()).ask(ticker.getSell()).high(ticker.getHigh())
-        .low(ticker.getLow()).volume(ticker.getVol()).build();
-  }
-
-  public static OrderBook adaptOrderBook(BitVcFuturesDepth depth, CurrencyPair currencyPair) {
-
-    List<LimitOrder> asks = adaptOrderBook(depth.getAsks(), ASK, currencyPair);
-    List<LimitOrder> bids = adaptOrderBook(depth.getBids(), BID, currencyPair);
-
-    // ask side is flipped
-    Collections.sort(asks);
-
-    return new OrderBook(null, asks, bids);
-  }
-
-  private static List<LimitOrder> adaptOrderBook(BigDecimal[][] orders, OrderType type, CurrencyPair currencyPair) {
-
-    List<LimitOrder> limitOrders = new ArrayList<>(orders.length);
-
-    for (int i = 0; i < orders.length; i++) {
-      BigDecimal[] order = orders[i];
-
-      LimitOrder limitOrder = new LimitOrder(type, order[1], currencyPair, null, null, order[0]);
-      limitOrders.add(limitOrder);
-    }
-    return limitOrders;
-  }
-
-  public static Trades adaptTrades(BitVcFuturesTrade[] trades, CurrencyPair currencyPair) {
-
-    List<Trade> tradeList = new ArrayList<>(trades.length);
-    for (BitVcFuturesTrade trade : trades) {
-      tradeList.add(adaptTrade(trade, currencyPair));
+        return new Ticker.Builder().currencyPair(currencyPair).last(ticker.getLast()).bid(ticker.getBuy()).ask(ticker.getSell()).high(ticker.getHigh())
+                .low(ticker.getLow()).volume(ticker.getVol()).build();
     }
 
-    return new Trades(tradeList, TradeSortType.SortByID);
-  }
+    public static OrderBook adaptOrderBook(BitVcFuturesDepth depth, CurrencyPair currencyPair) {
 
-  private static Trade adaptTrade(BitVcFuturesTrade trade, CurrencyPair currencyPair) {
+        List<LimitOrder> asks = adaptOrderBook(depth.getAsks(), ASK, currencyPair);
+        List<LimitOrder> bids = adaptOrderBook(depth.getBids(), BID, currencyPair);
 
-    OrderType type = trade.getType().equals("buy") ? BID : ASK;
-    return new Trade(type, trade.getAmount(), currencyPair, trade.getPrice(), trade.getDate(), trade.getId());
-  }
+        // ask side is flipped
+        Collections.sort(asks);
 
-  public static AccountInfo adaptAccountInfo(final BitVcFuturesAccountInfo accountInfo) {
-    Balance btcBalance = new Balance(BTC, accountInfo.getAvailableMargin());
-
-    return new AccountInfo(new Wallet(btcBalance, ZERO_USD_BALANCE, ZERO_LTC_BALANCE));
-  }
-
-  public static OpenOrders adaptOpenOrders(final BitVcFuturesPositionByContract positions) {
-    final BitVcFuturesPosition[] weekPositions = positions.getWeekPositions();
-    if (weekPositions.length <= 0) {
-      return NO_OPEN_ORDERS;
+        return new OrderBook(null, asks, bids);
     }
 
-    List<LimitOrder> orders = new ArrayList<>(weekPositions.length);
-    for (BitVcFuturesPosition position : weekPositions) {
-      orders.add(new LimitOrder(position.getTradeType() == 1 ? OrderType.BID : OrderType.ASK, position.getAmount(), CurrencyPair.BTC_CNY,
-          String.valueOf(position.getId()), new Date(), position.getPrice()));
+    private static List<LimitOrder> adaptOrderBook(BigDecimal[][] orders, OrderType type, CurrencyPair currencyPair) {
+
+        List<LimitOrder> limitOrders = new ArrayList<>(orders.length);
+
+        for (int i = 0; i < orders.length; i++) {
+            BigDecimal[] order = orders[i];
+
+            LimitOrder limitOrder = new LimitOrder(type, order[1], currencyPair, null, null, order[0]);
+            limitOrders.add(limitOrder);
+        }
+        return limitOrders;
     }
 
-    return new OpenOrders(orders);
-  }
+    public static Trades adaptTrades(BitVcFuturesTrade[] trades, CurrencyPair currencyPair) {
+
+        List<Trade> tradeList = new ArrayList<>(trades.length);
+        for (BitVcFuturesTrade trade : trades) {
+            tradeList.add(adaptTrade(trade, currencyPair));
+        }
+
+        return new Trades(tradeList, TradeSortType.SortByID);
+    }
+
+    private static Trade adaptTrade(BitVcFuturesTrade trade, CurrencyPair currencyPair) {
+
+        OrderType type = trade.getType().equals("buy") ? BID : ASK;
+        return new Trade(type, trade.getAmount(), currencyPair, trade.getPrice(), trade.getDate(), trade.getId());
+    }
+
+    public static AccountInfo adaptAccountInfo(final BitVcFuturesAccountInfo accountInfo) {
+        Balance btcBalance = new Balance(BTC, accountInfo.getAvailableMargin());
+
+        return new AccountInfo(new Wallet(btcBalance, ZERO_USD_BALANCE, ZERO_LTC_BALANCE));
+    }
+
+    public static OpenOrders adaptOpenOrders(final BitVcFuturesPositionByContract positions) {
+        final BitVcFuturesPosition[] weekPositions = positions.getWeekPositions();
+        if (weekPositions.length <= 0) {
+            return NO_OPEN_ORDERS;
+        }
+
+        List<LimitOrder> orders = new ArrayList<>(weekPositions.length);
+        for (BitVcFuturesPosition position : weekPositions) {
+            orders.add(new LimitOrder(position.getTradeType() == 1 ? OrderType.BID : OrderType.ASK, position.getAmount(), CurrencyPair.BTC_CNY,
+                    String.valueOf(position.getId()), new Date(), position.getPrice()));
+        }
+
+        return new OpenOrders(orders);
+    }
 }

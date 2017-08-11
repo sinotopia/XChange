@@ -10,15 +10,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class BitVcFuturesPlaceOrderResult {
 
-  private final long id;
+    private final long id;
 
-  public BitVcFuturesPlaceOrderResult(@JsonProperty("id") final long id) {
+    public BitVcFuturesPlaceOrderResult(@JsonProperty("id") final long id) {
 
-    this.id = id;
-  }
+        this.id = id;
+    }
 
-  public long getId() {
+    public long getId() {
 
-    return id;
-  }
+        return id;
+    }
 }

@@ -4,15 +4,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class HuobiOrderResult {
 
-  private final HuobiOrder[] orders;
+    private final HuobiOrder[] orders;
 
-  public HuobiOrderResult(@JsonProperty("orders") HuobiOrder[] orders) {
+    public HuobiOrderResult(@JsonProperty("orders") HuobiOrder[] orders) {
 
-    this.orders = orders;
-  }
+        this.orders = orders;
+    }
 
-  public HuobiOrder[] getOrders() {
+    public HuobiOrder[] getOrders() {
 
-    return orders;
-  }
+        return orders;
+    }
 }

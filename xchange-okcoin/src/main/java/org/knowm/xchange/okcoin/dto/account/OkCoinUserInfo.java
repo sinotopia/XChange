@@ -6,17 +6,18 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class OkCoinUserInfo extends OkCoinErrorResult {
 
-  private final OkCoinInfo info;
+    private final OkCoinInfo info;
 
-  public OkCoinUserInfo(@JsonProperty("result") final boolean result, @JsonProperty("error_code") final int errorCode,
-      @JsonProperty("info") OkCoinInfo info) {
+    public OkCoinUserInfo(@JsonProperty("result") final boolean result,
+                          @JsonProperty("error_code") final int errorCode,
+                          @JsonProperty("info") OkCoinInfo info) {
 
-    super(result, errorCode);
-    this.info = info;
-  }
+        super(result, errorCode);
+        this.info = info;
+    }
 
-  public OkCoinInfo getInfo() {
+    public OkCoinInfo getInfo() {
 
-    return info;
-  }
+        return info;
+    }
 }

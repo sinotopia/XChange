@@ -9,117 +9,123 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class HuobiOrderBookTAS {
 
-  /**
-   * Times and sales.
-   */
-  private final HuobiTradeObject[] trades;
+    /**
+     * Times and sales.
+     */
+    private final HuobiTradeObject[] trades;
 
-  /**
-   * Latest.
-   */
-  private final BigDecimal pNew;
+    /**
+     * Latest.
+     */
+    private final BigDecimal pNew;
 
-  /**
-   * Percent change.
-   */
-  private final BigDecimal level;
+    /**
+     * Percent change.
+     */
+    private final BigDecimal level;
 
-  /**
-   * Volume.
-   */
-  private final BigDecimal amount;
+    /**
+     * Volume.
+     */
+    private final BigDecimal amount;
 
-  /**
-   * Total(RMB).
-   */
-  private final BigDecimal total;
+    /**
+     * Total(RMB).
+     */
+    private final BigDecimal total;
 
-  private final BigDecimal amp;
+    private final BigDecimal amp;
 
-  /**
-   * Open.
-   */
-  private final BigDecimal pOpen;
+    /**
+     * Open.
+     */
+    private final BigDecimal pOpen;
 
-  /**
-   * High.
-   */
-  private final BigDecimal pHigh;
+    /**
+     * High.
+     */
+    private final BigDecimal pHigh;
 
-  /**
-   * Low.
-   */
-  private final BigDecimal pLow;
+    /**
+     * Low.
+     */
+    private final BigDecimal pLow;
 
-  /**
-   * Close.
-   */
-  private final BigDecimal pLast;
+    /**
+     * Close.
+     */
+    private final BigDecimal pLast;
 
-  public HuobiOrderBookTAS(@JsonProperty("trades") final HuobiTradeObject[] trades, @JsonProperty("p_new") final BigDecimal pNew,
-      @JsonProperty("level") final BigDecimal level, @JsonProperty("amount") final BigDecimal amount, @JsonProperty("total") final BigDecimal total,
-      @JsonProperty("amp") final BigDecimal amp, @JsonProperty("p_open") final BigDecimal pOpen, @JsonProperty("p_high") final BigDecimal pHigh,
-      @JsonProperty("p_low") final BigDecimal pLow, @JsonProperty("p_last") final BigDecimal pLast) {
+    public HuobiOrderBookTAS(@JsonProperty("trades") final HuobiTradeObject[] trades,
+                             @JsonProperty("p_new") final BigDecimal pNew,
+                             @JsonProperty("level") final BigDecimal level,
+                             @JsonProperty("amount") final BigDecimal amount,
+                             @JsonProperty("total") final BigDecimal total,
+                             @JsonProperty("amp") final BigDecimal amp,
+                             @JsonProperty("p_open") final BigDecimal pOpen,
+                             @JsonProperty("p_high") final BigDecimal pHigh,
+                             @JsonProperty("p_low") final BigDecimal pLow,
+                             @JsonProperty("p_last") final BigDecimal pLast) {
 
-    this.trades = trades;
-    this.pNew = pNew;
-    this.level = level;
-    this.amount = amount;
-    this.total = total;
-    this.amp = amp;
-    this.pOpen = pOpen;
-    this.pHigh = pHigh;
-    this.pLow = pLow;
-    this.pLast = pLast;
-  }
+        this.trades = trades;
+        this.pNew = pNew;
+        this.level = level;
+        this.amount = amount;
+        this.total = total;
+        this.amp = amp;
+        this.pOpen = pOpen;
+        this.pHigh = pHigh;
+        this.pLow = pLow;
+        this.pLast = pLast;
+    }
 
-  public HuobiTradeObject[] getTrades() {
+    public HuobiTradeObject[] getTrades() {
 
-    return trades;
-  }
+        return trades;
+    }
 
-  public BigDecimal getPNew() {
+    public BigDecimal getPNew() {
 
-    return pNew;
-  }
+        return pNew;
+    }
 
-  public BigDecimal getLevel() {
+    public BigDecimal getLevel() {
 
-    return level;
-  }
+        return level;
+    }
 
-  public BigDecimal getAmount() {
+    public BigDecimal getAmount() {
 
-    return amount;
-  }
+        return amount;
+    }
 
-  public BigDecimal getTotal() {
+    public BigDecimal getTotal() {
 
-    return total;
-  }
+        return total;
+    }
 
-  public BigDecimal getAmp() {
+    public BigDecimal getAmp() {
 
-    return amp;
-  }
+        return amp;
+    }
 
-  public BigDecimal getPOpen() {
+    public BigDecimal getPOpen() {
 
-    return pOpen;
-  }
+        return pOpen;
+    }
 
-  public BigDecimal getPHigh() {
+    public BigDecimal getPHigh() {
 
-    return pHigh;
-  }
+        return pHigh;
+    }
 
-  public BigDecimal getPLow() {
+    public BigDecimal getPLow() {
 
-    return pLow;
-  }
+        return pLow;
+    }
 
-  public BigDecimal getPLast() {
+    public BigDecimal getPLast() {
 
-    return pLast;
-  }
+        return pLast;
+    }
 }

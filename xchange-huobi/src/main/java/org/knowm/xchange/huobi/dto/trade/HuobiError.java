@@ -4,32 +4,34 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class HuobiError {
 
-  public static final int ORDER_NOT_EXIST = 26;
+    public static final int ORDER_NOT_EXIST = 26;
 
-  private final int code;
-  private final String msg;
-  private final long time;
+    private final int code;
+    private final String msg;
+    private final long time;
 
-  public HuobiError(@JsonProperty("code") final int code, @JsonProperty("msg") final String msg, @JsonProperty("time") final long time) {
+    public HuobiError(@JsonProperty("code") final int code,
+                      @JsonProperty("msg") final String msg,
+                      @JsonProperty("time") final long time) {
 
-    this.code = code;
-    this.msg = msg;
-    this.time = time;
-  }
+        this.code = code;
+        this.msg = msg;
+        this.time = time;
+    }
 
-  public int getCode() {
+    public int getCode() {
 
-    return code;
-  }
+        return code;
+    }
 
-  public String getMsg() {
+    public String getMsg() {
 
-    return msg;
-  }
+        return msg;
+    }
 
-  public long getTime() {
+    public long getTime() {
 
-    return time;
-  }
+        return time;
+    }
 
 }

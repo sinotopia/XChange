@@ -5,76 +5,143 @@ import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+/**
+ * "orders": [{
+ * "amount": 0.1,
+ * "avg_price": 1.961,
+ * "create_date": 1422502117000,
+ * "deal_amount": 0.1,
+ * "order_id": 20914907,
+ * "orders_id": 20914907,
+ * "price": 0,
+ * "status": 2,
+ * "symbol": "ltc_usd",
+ * "type": "sell_market"
+ * }],
+ */
+
+/**
+ * 订单信息
+ */
 public class OkCoinOrder {
 
-  private final long orderId;
+    /**
+     * 订单ID
+     */
+    private final long orderId;
 
-  private final int status;
+    /**
+     * 订单ID(不建议使用)
+     */
+    private final long ordersid;
 
-  private final String symbol;
+    /**
+     * -1:已撤销  0:未成交  1:部分成交  2:完全成交 4:撤单处理中,5:撤单处理中
+     */
+    private final int status;
 
-  private final String type;
+    /**
+     * 币种
+     */
+    private final String symbol;
 
-  private final BigDecimal amount;
+    /**
+     * buy_market:市价买入 / sell_market:市价卖出
+     */
+    private final String type;
 
-  private final BigDecimal dealAmount;
+    /**
+     * 委托数量
+     */
+    private final BigDecimal amount;
 
-  private final Date createDate;
+    /**
+     * 成交数量
+     */
+    private final BigDecimal dealAmount;
 
-  private final BigDecimal price;
+    /**
+     * 委托时间
+     */
+    private final Date createDate;
+    /**
+     * 委托价格
+     */
+    private final BigDecimal price;
 
-  public OkCoinOrder(@JsonProperty("order_id") final long orderId, @JsonProperty("status") final int status,
-      @JsonProperty("symbol") final String symbol, @JsonProperty("type") final String type, @JsonProperty("price") final BigDecimal price,
-      @JsonProperty("amount") final BigDecimal amount, @JsonProperty("deal_amount") final BigDecimal dealAmount,
-      @JsonProperty("create_date") final Date createDate) {
+    /**
+     * 平均成交价
+     */
+    private final BigDecimal avgPrice;
 
-    this.orderId = orderId;
-    this.status = status;
-    this.symbol = symbol;
-    this.type = type;
-    this.amount = amount;
-    this.dealAmount = dealAmount;
-    this.price = price;
-    this.createDate = createDate;
-  }
+    public OkCoinOrder(@JsonProperty("order_id") final long orderId,
+                       @JsonProperty("orders_id") final long ordersid,
+                       @JsonProperty("status") final int status,
+                       @JsonProperty("symbol") final String symbol,
+                       @JsonProperty("type") final String type,
+                       @JsonProperty("price") final BigDecimal price,
+                       @JsonProperty("avg_price") final BigDecimal avgPrice,
+                       @JsonProperty("amount") final BigDecimal amount,
+                       @JsonProperty("deal_amount") final BigDecimal dealAmount,
+                       @JsonProperty("create_date") final Date createDate) {
 
-  public long getOrderId() {
+        this.orderId = orderId;
+        this.ordersid = ordersid;
+        this.status = status;
+        this.symbol = symbol;
+        this.type = type;
+        this.amount = amount;
+        this.dealAmount = dealAmount;
+        this.price = price;
+        this.avgPrice = avgPrice;
+        this.createDate = createDate;
+    }
 
-    return orderId;
-  }
+    public long getOrderId() {
 
-  public int getStatus() {
+        return orderId;
+    }
 
-    return status;
-  }
+    public int getStatus() {
 
-  public String getSymbol() {
+        return status;
+    }
 
-    return symbol;
-  }
+    public String getSymbol() {
 
-  public String getType() {
+        return symbol;
+    }
 
-    return type;
-  }
+    public String getType() {
 
-  public BigDecimal getAmount() {
+        return type;
+    }
 
-    return amount;
-  }
+    public BigDecimal getAmount() {
 
-  public BigDecimal getDealAmount() {
+        return amount;
+    }
 
-    return dealAmount;
-  }
+    public BigDecimal getDealAmount() {
 
-  public Date getCreateDate() {
+        return dealAmount;
+    }
 
-    return createDate;
-  }
+    public Date getCreateDate() {
 
-  public BigDecimal getPrice() {
+        return createDate;
+    }
 
-    return price;
-  }
+    public BigDecimal getPrice() {
+
+        return price;
+    }
+
+    public long getOrdersid() {
+        return ordersid;
+    }
+
+    public BigDecimal getAvgPrice() {
+        return avgPrice;
+    }
 }

@@ -7,52 +7,56 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class BitVcFuturesTrade {
 
-  private final String id;
-  private final String time;
-  private final BigDecimal price;
-  private final BigDecimal amount;
-  private final String type;
-  private final Date date;
+    private final String id;
+    private final String time;
+    private final BigDecimal price;
+    private final BigDecimal amount;
+    private final String type;
+    private final Date date;
 
-  public BitVcFuturesTrade(@JsonProperty("tid") String id, @JsonProperty("time") final String time, @JsonProperty("price") final BigDecimal price,
-      @JsonProperty("amount") final BigDecimal amount, @JsonProperty("type") final String type, @JsonProperty("date") Date date) {
+    public BitVcFuturesTrade(@JsonProperty("tid") String id,
+                             @JsonProperty("time") final String time,
+                             @JsonProperty("price") final BigDecimal price,
+                             @JsonProperty("amount") final BigDecimal amount,
+                             @JsonProperty("type") final String type,
+                             @JsonProperty("date") Date date) {
 
-    this.time = time;
-    this.price = price;
-    this.amount = amount;
-    this.type = type;
-    this.id = id;
-    this.date = date;
-  }
+        this.time = time;
+        this.price = price;
+        this.amount = amount;
+        this.type = type;
+        this.id = id;
+        this.date = date;
+    }
 
-  public String getTime() {
+    public String getTime() {
 
-    return time;
-  }
+        return time;
+    }
 
-  public BigDecimal getPrice() {
+    public BigDecimal getPrice() {
 
-    return price;
-  }
+        return price;
+    }
 
-  public BigDecimal getAmount() {
+    public BigDecimal getAmount() {
 
-    return amount;
-  }
+        return amount;
+    }
 
-  public String getType() {
+    public String getType() {
 
-    return type;
-  }
+        return type;
+    }
 
-  public Date getDate() {
+    public Date getDate() {
 
-    return date;
-  }
+        return date;
+    }
 
-  public String getId() {
+    public String getId() {
 
-    return id;
-  }
+        return id;
+    }
 
 }

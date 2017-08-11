@@ -14,40 +14,40 @@ import si.mazi.rescu.RestProxyFactory;
 
 public class BitVcFuturesMarketDataServiceRaw extends HuobiBaseService {
 
-  private final BitVcFutures bitvc;
-  private final FuturesContract contract;
+    private final BitVcFutures bitvc;
+    private final FuturesContract contract;
 
-  /**
-   * Constructor
-   *
-   * @param exchange
-   * @param contract
-   */
-  public BitVcFuturesMarketDataServiceRaw(Exchange exchange, FuturesContract contract) {
+    /**
+     * Constructor
+     *
+     * @param exchange
+     * @param contract
+     */
+    public BitVcFuturesMarketDataServiceRaw(Exchange exchange, FuturesContract contract) {
 
-    super(exchange);
+        super(exchange);
 
-    this.bitvc = RestProxyFactory.createProxy(BitVcFutures.class, "http://market.bitvc.com/futures/");
-    this.contract = contract;
-  }
+        this.bitvc = RestProxyFactory.createProxy(BitVcFutures.class, "http://market.bitvc.com/futures/");
+        this.contract = contract;
+    }
 
-  public BitVcFuturesTicker getBitVcTicker(String symbol) throws IOException {
+    public BitVcFuturesTicker getBitVcTicker(String symbol) throws IOException {
 
-    return bitvc.getTicker(symbol, contract.getName());
-  }
+        return bitvc.getTicker(symbol, contract.getName());
+    }
 
-  public BitVcFuturesDepth getBitVcDepth(String symbol) throws IOException {
+    public BitVcFuturesDepth getBitVcDepth(String symbol) throws IOException {
 
-    return bitvc.getDepths(symbol, contract.getName());
-  }
+        return bitvc.getDepths(symbol, contract.getName());
+    }
 
-  public BitVcFuturesTrade[] getBitVcTrades(String symbol) throws IOException {
+    public BitVcFuturesTrade[] getBitVcTrades(String symbol) throws IOException {
 
-    return bitvc.getTrades(symbol, contract.getName());
-  }
+        return bitvc.getTrades(symbol, contract.getName());
+    }
 
-  public BitVcExchangeRate getBitVcExchangeRate() throws IOException {
+    public BitVcExchangeRate getBitVcExchangeRate() throws IOException {
 
-    return bitvc.getExchangeRate();
-  }
+        return bitvc.getExchangeRate();
+    }
 }

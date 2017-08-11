@@ -5,32 +5,34 @@ import org.knowm.xchange.okcoin.dto.trade.OkCoinErrorResult;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class OkCoinAccountRecords extends OkCoinErrorResult {
-  private final OkCoinRecords[] records;
-  private final String symbol;
-  private final int errorCode;
 
-  public OkCoinAccountRecords(@JsonProperty("error_code") final int errorCode, @JsonProperty("records") final OkCoinRecords[] records,
-      @JsonProperty("symbol") final String symbol) {
-    super(true, errorCode);
-    this.errorCode = errorCode;
-    this.records = records;
-    this.symbol = symbol;
-  }
+    private final OkCoinRecords[] records;
+    private final String symbol;
+    private final int errorCode;
 
-  public OkCoinRecords[] getRecords() {
-    return records;
-  }
+    public OkCoinAccountRecords(@JsonProperty("error_code") final int errorCode,
+                                @JsonProperty("records") final OkCoinRecords[] records,
+                                @JsonProperty("symbol") final String symbol) {
+        super(true, errorCode);
+        this.errorCode = errorCode;
+        this.records = records;
+        this.symbol = symbol;
+    }
 
-  public String getSymbol() {
-    return symbol;
-  }
+    public OkCoinRecords[] getRecords() {
+        return records;
+    }
 
-  public int getErrorCode() {
-    return errorCode;
-  }
+    public String getSymbol() {
+        return symbol;
+    }
 
-  public boolean isResult() {
-    return (errorCode == 0);
-  }
+    public int getErrorCode() {
+        return errorCode;
+    }
+
+    public boolean isResult() {
+        return (errorCode == 0);
+    }
 
 }

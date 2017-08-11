@@ -24,41 +24,41 @@ import si.mazi.rescu.ParamsDigest;
 @Produces(MediaType.APPLICATION_JSON)
 public interface BitVcFutures {
 
-  @GET
-  @Path("ticker_{symbol}_{contract}.js")
-  BitVcFuturesTicker getTicker(@PathParam("symbol") String symbol, @PathParam("contract") String contract) throws IOException;
+    @GET
+    @Path("ticker_{symbol}_{contract}.js")
+    BitVcFuturesTicker getTicker(@PathParam("symbol") String symbol, @PathParam("contract") String contract) throws IOException;
 
-  @GET
-  @Path("depths_{symbol}_{contract}.js")
-  BitVcFuturesDepth getDepths(@PathParam("symbol") String symbol, @PathParam("contract") String contract) throws IOException;
+    @GET
+    @Path("depths_{symbol}_{contract}.js")
+    BitVcFuturesDepth getDepths(@PathParam("symbol") String symbol, @PathParam("contract") String contract) throws IOException;
 
-  @GET
-  @Path("trades_{symbol}_{contract}.js")
-  BitVcFuturesTrade[] getTrades(@PathParam("symbol") String symbol, @PathParam("contract") String contract) throws IOException;
+    @GET
+    @Path("trades_{symbol}_{contract}.js")
+    BitVcFuturesTrade[] getTrades(@PathParam("symbol") String symbol, @PathParam("contract") String contract) throws IOException;
 
-  /**
-   * Non-XChange compatible methods
-   */
+    /**
+     * Non-XChange compatible methods
+     */
 
-  @GET
-  @Path("exchange_rate.js")
-  BitVcExchangeRate getExchangeRate() throws IOException;
+    @GET
+    @Path("exchange_rate.js")
+    BitVcExchangeRate getExchangeRate() throws IOException;
 
-  @POST
-  @Path("order/save")
-  BitVcFuturesPlaceOrderResult placeLimitOrder(@FormParam("accessKey") String accessKey, @FormParam("coinType") int coinType,
-      @FormParam("contractType") String contractType, @FormParam("created") long created, @FormParam("sign") ParamsDigest sign,
-      @FormParam("orderType") int orderType, @FormParam("tradeType") int tradeType, @FormParam("price") double price,
-      @FormParam("money") double amount) throws IOException;
+    @POST
+    @Path("order/save")
+    BitVcFuturesPlaceOrderResult placeLimitOrder(@FormParam("accessKey") String accessKey, @FormParam("coinType") int coinType,
+                                                 @FormParam("contractType") String contractType, @FormParam("created") long created, @FormParam("sign") ParamsDigest sign,
+                                                 @FormParam("orderType") int orderType, @FormParam("tradeType") int tradeType, @FormParam("price") double price,
+                                                 @FormParam("money") double amount) throws IOException;
 
-  @POST
-  @Path("balance")
-  BitVcFuturesAccountInfo balance(@FormParam("accessKey") String accessKey, @FormParam("coinType") int coinType, @FormParam("created") long created,
-      @FormParam("sign") ParamsDigest sign);
+    @POST
+    @Path("balance")
+    BitVcFuturesAccountInfo balance(@FormParam("accessKey") String accessKey, @FormParam("coinType") int coinType, @FormParam("created") long created,
+                                    @FormParam("sign") ParamsDigest sign);
 
-  @POST
-  @Path("holdOrder/list")
-  BitVcFuturesPositionByContract positions(@FormParam("accessKey") String accessKey, @FormParam("coinType") int coinType,
-      @FormParam("created") long created, @FormParam("sign") ParamsDigest sign);
+    @POST
+    @Path("holdOrder/list")
+    BitVcFuturesPositionByContract positions(@FormParam("accessKey") String accessKey, @FormParam("coinType") int coinType,
+                                             @FormParam("created") long created, @FormParam("sign") ParamsDigest sign);
 
 }

@@ -13,33 +13,33 @@ import org.knowm.xchange.service.marketdata.MarketDataService;
 
 public class BitVcFuturesMarketDataService extends BitVcFuturesMarketDataServiceRaw implements MarketDataService {
 
-  /**
-   * Constructor
-   *
-   * @param exchange
-   * @param contract
-   */
-  public BitVcFuturesMarketDataService(Exchange exchange, FuturesContract contract) {
+    /**
+     * Constructor
+     *
+     * @param exchange
+     * @param contract
+     */
+    public BitVcFuturesMarketDataService(Exchange exchange, FuturesContract contract) {
 
-    super(exchange, contract);
-  }
+        super(exchange, contract);
+    }
 
-  @Override
-  public Ticker getTicker(CurrencyPair currencyPair, Object... args) throws IOException {
+    @Override
+    public Ticker getTicker(CurrencyPair currencyPair, Object... args) throws IOException {
 
-    return BitVcFuturesAdapter.adaptTicker(getBitVcTicker(currencyPair.base.getCurrencyCode().toLowerCase()), currencyPair);
-  }
+        return BitVcFuturesAdapter.adaptTicker(getBitVcTicker(currencyPair.base.getCurrencyCode().toLowerCase()), currencyPair);
+    }
 
-  @Override
-  public OrderBook getOrderBook(CurrencyPair currencyPair, Object... args) throws IOException {
+    @Override
+    public OrderBook getOrderBook(CurrencyPair currencyPair, Object... args) throws IOException {
 
-    return BitVcFuturesAdapter.adaptOrderBook(getBitVcDepth(currencyPair.base.getCurrencyCode().toLowerCase()), currencyPair);
-  }
+        return BitVcFuturesAdapter.adaptOrderBook(getBitVcDepth(currencyPair.base.getCurrencyCode().toLowerCase()), currencyPair);
+    }
 
-  @Override
-  public Trades getTrades(CurrencyPair currencyPair, Object... args) throws IOException {
+    @Override
+    public Trades getTrades(CurrencyPair currencyPair, Object... args) throws IOException {
 
-    return BitVcFuturesAdapter.adaptTrades(getBitVcTrades(currencyPair.base.getCurrencyCode().toLowerCase()), currencyPair);
-  }
+        return BitVcFuturesAdapter.adaptTrades(getBitVcTrades(currencyPair.base.getCurrencyCode().toLowerCase()), currencyPair);
+    }
 
 }

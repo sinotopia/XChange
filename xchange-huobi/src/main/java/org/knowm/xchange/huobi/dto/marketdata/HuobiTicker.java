@@ -4,16 +4,16 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class HuobiTicker {
 
-  private final HuobiTickerObject ticker;
+    private final HuobiTickerObject ticker;
 
-  public HuobiTicker(@JsonProperty("ticker") final HuobiTickerObject ticker) {
+    public HuobiTicker(@JsonProperty("ticker") final HuobiTickerObject ticker) {
 
-    this.ticker = ticker;
-  }
+        this.ticker = ticker;
+    }
 
-  public HuobiTickerObject getTicker() {
+    public HuobiTickerObject getTicker() {
 
-    return ticker;
-  }
+        return ticker;
+    }
 
 }

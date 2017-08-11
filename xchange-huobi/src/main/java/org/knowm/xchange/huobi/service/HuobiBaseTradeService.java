@@ -6,25 +6,25 @@ import org.knowm.xchange.huobi.Huobi;
 import si.mazi.rescu.RestProxyFactory;
 
 public class HuobiBaseTradeService extends HuobiBaseService {
-  protected final Huobi huobi;
-  protected final String accessKey;
-  protected final HuobiDigest digest;
+    protected final Huobi huobi;
+    protected final String accessKey;
+    protected final HuobiDigest digest;
 
-  /**
-   * Constructor
-   *
-   * @param exchange
-   */
-  protected HuobiBaseTradeService(Exchange exchange) {
+    /**
+     * Constructor
+     *
+     * @param exchange
+     */
+    protected HuobiBaseTradeService(Exchange exchange) {
 
-    super(exchange);
+        super(exchange);
 
-    huobi = RestProxyFactory.createProxy(Huobi.class, exchange.getExchangeSpecification().getSslUri());
-    accessKey = exchange.getExchangeSpecification().getApiKey();
-    digest = new HuobiDigest(exchange.getExchangeSpecification().getSecretKey(), "secret_key");
-  }
+        huobi = RestProxyFactory.createProxy(Huobi.class, exchange.getExchangeSpecification().getSslUri());
+        accessKey = exchange.getExchangeSpecification().getApiKey();
+        digest = new HuobiDigest(exchange.getExchangeSpecification().getSecretKey(), "secret_key");
+    }
 
-  protected long nextCreated() {
-    return System.currentTimeMillis() / 1000;
-  }
+    protected long nextCreated() {
+        return System.currentTimeMillis() / 1000;
+    }
 }

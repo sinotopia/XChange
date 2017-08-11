@@ -11,34 +11,34 @@ import si.mazi.rescu.RestProxyFactory;
 
 public class OKCoinBaseTradeService extends OkCoinBaseService {
 
-  protected final OkCoin okCoin;
-  protected final OkCoinDigest signatureCreator;
-  protected final String apikey;
-  protected final String secretKey;
+    protected final OkCoin okCoin;
+    protected final OkCoinDigest signatureCreator;
+    protected final String apikey;
+    protected final String secretKey;
 
-  /**
-   * Constructor
-   *
-   * @param exchange
-   */
-  protected OKCoinBaseTradeService(Exchange exchange) {
+    /**
+     * Constructor
+     *
+     * @param exchange
+     */
+    protected OKCoinBaseTradeService(Exchange exchange) {
 
-    super(exchange);
+        super(exchange);
 
-    okCoin = RestProxyFactory.createProxy(OkCoin.class, exchange.getExchangeSpecification().getSslUri());
-    apikey = exchange.getExchangeSpecification().getApiKey();
-    secretKey = exchange.getExchangeSpecification().getSecretKey();
+        okCoin = RestProxyFactory.createProxy(OkCoin.class, exchange.getExchangeSpecification().getSslUri());
+        apikey = exchange.getExchangeSpecification().getApiKey();
+        secretKey = exchange.getExchangeSpecification().getSecretKey();
 
-    signatureCreator = new OkCoinDigest(apikey, secretKey);
-  }
-
-  protected static <T extends OkCoinErrorResult> T returnOrThrow(T t) {
-
-    if (t.isResult()) {
-      return t;
-    } else {
-      throw new ExchangeException(OkCoinUtils.getErrorMessage(t.getErrorCode()));
+        signatureCreator = new OkCoinDigest(apikey, secretKey);
     }
-  }
+
+    protected static <T extends OkCoinErrorResult> T returnOrThrow(T t) {
+
+        if (t.isResult()) {
+            return t;
+        } else {
+            throw new ExchangeException(OkCoinUtils.getErrorMessage(t.getErrorCode()));
+        }
+    }
 
 }

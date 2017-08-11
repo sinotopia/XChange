@@ -4,18 +4,20 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class HuobiCancelOrderResult extends HuobiError {
 
-  private final String result;
+    private final String result;
 
-  public HuobiCancelOrderResult(@JsonProperty("code") final int code, @JsonProperty("msg") final String msg, @JsonProperty("time") final long time,
-      @JsonProperty("result") final String result) {
+    public HuobiCancelOrderResult(@JsonProperty("code") final int code,
+                                  @JsonProperty("msg") final String msg,
+                                  @JsonProperty("time") final long time,
+                                  @JsonProperty("result") final String result) {
 
-    super(code, msg, time);
-    this.result = result;
-  }
+        super(code, msg, time);
+        this.result = result;
+    }
 
-  public String getResult() {
+    public String getResult() {
 
-    return result;
-  }
+        return result;
+    }
 
 }

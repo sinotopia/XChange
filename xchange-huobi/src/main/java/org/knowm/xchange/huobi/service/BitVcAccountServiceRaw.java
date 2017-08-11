@@ -8,24 +8,24 @@ import org.knowm.xchange.huobi.dto.account.BitVcAccountInfo;
 
 public class BitVcAccountServiceRaw extends BitVcBaseTradeService {
 
-  /**
-   * Constructor
-   *
-   * @param exchange
-   */
-  public BitVcAccountServiceRaw(Exchange exchange) {
+    /**
+     * Constructor
+     *
+     * @param exchange
+     */
+    public BitVcAccountServiceRaw(Exchange exchange) {
 
-    super(exchange);
-  }
-
-  public BitVcAccountInfo getBitVcAccountInfo() throws IOException {
-
-    BitVcAccountInfo rawAccountInfo = bitvc.getAccountInfo(accessKey, nextCreated(), digest);
-
-    if (rawAccountInfo.getMessage() != null) {
-      throw new ExchangeException(rawAccountInfo.getMessage());
-    } else {
-      return rawAccountInfo;
+        super(exchange);
     }
-  }
+
+    public BitVcAccountInfo getBitVcAccountInfo() throws IOException {
+
+        BitVcAccountInfo rawAccountInfo = bitvc.getAccountInfo(accessKey, nextCreated(), digest);
+
+        if (rawAccountInfo.getMessage() != null) {
+            throw new ExchangeException(rawAccountInfo.getMessage());
+        } else {
+            return rawAccountInfo;
+        }
+    }
 }

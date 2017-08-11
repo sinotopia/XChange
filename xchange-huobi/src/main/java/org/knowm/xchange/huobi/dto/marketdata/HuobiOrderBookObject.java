@@ -6,31 +6,32 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class HuobiOrderBookObject {
 
-  private final BigDecimal price;
-  private final BigDecimal level;
-  private final BigDecimal amount;
+    private final BigDecimal price;
+    private final BigDecimal level;
+    private final BigDecimal amount;
 
-  public HuobiOrderBookObject(@JsonProperty("price") final BigDecimal price, @JsonProperty("level") final BigDecimal level,
-      @JsonProperty("amount") final BigDecimal amount) {
+    public HuobiOrderBookObject(@JsonProperty("price") final BigDecimal price,
+                                @JsonProperty("level") final BigDecimal level,
+                                @JsonProperty("amount") final BigDecimal amount) {
 
-    this.price = price;
-    this.level = level;
-    this.amount = amount;
-  }
+        this.price = price;
+        this.level = level;
+        this.amount = amount;
+    }
 
-  public BigDecimal getPrice() {
+    public BigDecimal getPrice() {
 
-    return price;
-  }
+        return price;
+    }
 
-  public BigDecimal getLevel() {
+    public BigDecimal getLevel() {
 
-    return level;
-  }
+        return level;
+    }
 
-  public BigDecimal getAmount() {
+    public BigDecimal getAmount() {
 
-    return amount;
-  }
+        return amount;
+    }
 
 }

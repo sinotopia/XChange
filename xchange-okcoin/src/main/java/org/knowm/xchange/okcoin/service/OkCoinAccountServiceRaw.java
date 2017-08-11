@@ -10,46 +10,47 @@ import org.knowm.xchange.okcoin.dto.account.OkCoinFuturesUserInfoCross;
 import org.knowm.xchange.okcoin.dto.account.OkCoinUserInfo;
 
 public class OkCoinAccountServiceRaw extends OKCoinBaseTradeService {
-  private final String tradepwd;
 
-  /**
-   * Constructor
-   *
-   * @param exchange
-   */
-  protected OkCoinAccountServiceRaw(Exchange exchange) {
+    private final String tradepwd;
 
-    super(exchange);
+    /**
+     * Constructor
+     *
+     * @param exchange
+     */
+    protected OkCoinAccountServiceRaw(Exchange exchange) {
 
-    tradepwd = (String) exchange.getExchangeSpecification().getExchangeSpecificParametersItem("tradepwd");
-  }
+        super(exchange);
 
-  public OkCoinUserInfo getUserInfo() throws IOException {
+        tradepwd = (String) exchange.getExchangeSpecification().getExchangeSpecificParametersItem("tradepwd");
+    }
 
-    OkCoinUserInfo userInfo = okCoin.getUserInfo(apikey, signatureCreator);
+    public OkCoinUserInfo getUserInfo() throws IOException {
 
-    return returnOrThrow(userInfo);
-  }
+        OkCoinUserInfo userInfo = okCoin.getUserInfo(apikey, signatureCreator);
 
-  public OkCoinFuturesUserInfoCross getFutureUserInfo() throws IOException {
+        return returnOrThrow(userInfo);
+    }
 
-    OkCoinFuturesUserInfoCross futuresUserInfoCross = okCoin.getFuturesUserInfoCross(apikey, signatureCreator);
+    public OkCoinFuturesUserInfoCross getFutureUserInfo() throws IOException {
 
-    return returnOrThrow(futuresUserInfoCross);
-  }
+        OkCoinFuturesUserInfoCross futuresUserInfoCross = okCoin.getFuturesUserInfoCross(apikey, signatureCreator);
 
-  public OKCoinWithdraw withdraw(String assetPairs, String assets, String key, BigDecimal amount) throws IOException {
-    OKCoinWithdraw withdrawResult = okCoin.withdraw(exchange.getExchangeSpecification().getApiKey(), assets, signatureCreator, "0.0001", tradepwd,
-        key, amount.toString());
+        return returnOrThrow(futuresUserInfoCross);
+    }
 
-    return returnOrThrow(withdrawResult);
-  }
+    public OKCoinWithdraw withdraw(String assetPairs, String assets, String key, BigDecimal amount) throws IOException {
+        OKCoinWithdraw withdrawResult = okCoin.withdraw(exchange.getExchangeSpecification().getApiKey(), assets, signatureCreator, "0.0001", tradepwd,
+                key, amount.toString());
 
-  public OkCoinAccountRecords getAccountRecords(String symbol, String type, String currentPage, String pageLength) throws IOException {
+        return returnOrThrow(withdrawResult);
+    }
 
-    OkCoinAccountRecords accountRecords = okCoin.getAccountRecords(apikey, symbol, type, currentPage, pageLength, signatureCreator);
+    public OkCoinAccountRecords getAccountRecords(String symbol, String type, String currentPage, String pageLength) throws IOException {
 
-    return returnOrThrow(accountRecords);
-  }
+        OkCoinAccountRecords accountRecords = okCoin.getAccountRecords(apikey, symbol, type, currentPage, pageLength, signatureCreator);
+
+        return returnOrThrow(accountRecords);
+    }
 
 }

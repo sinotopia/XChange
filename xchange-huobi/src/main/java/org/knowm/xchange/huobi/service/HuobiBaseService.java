@@ -6,13 +6,13 @@ import org.knowm.xchange.service.BaseService;
 
 public class HuobiBaseService extends BaseExchangeService implements BaseService {
 
-  /**
-   * Constructor
-   *
-   * @param exchange
-   */
-  public HuobiBaseService(Exchange exchange) {
+    /**
+     * Constructor
+     *
+     * @param exchange
+     */
+    public HuobiBaseService(Exchange exchange) {
 
-    super(exchange);
-  }
+        super(exchange);
+    }
 }

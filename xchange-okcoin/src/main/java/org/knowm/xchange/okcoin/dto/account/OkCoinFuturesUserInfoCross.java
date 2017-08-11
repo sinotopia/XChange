@@ -6,17 +6,18 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class OkCoinFuturesUserInfoCross extends OkCoinErrorResult {
 
-  private final OkCoinFuturesInfoCross info;
+    private final OkCoinFuturesInfoCross info;
 
-  public OkCoinFuturesUserInfoCross(@JsonProperty("result") final boolean result, @JsonProperty("error_code") final int errorCode,
-      @JsonProperty("info") OkCoinFuturesInfoCross info) {
+    public OkCoinFuturesUserInfoCross(@JsonProperty("result") final boolean result,
+                                      @JsonProperty("error_code") final int errorCode,
+                                      @JsonProperty("info") OkCoinFuturesInfoCross info) {
 
-    super(result, errorCode);
-    this.info = info;
-  }
+        super(result, errorCode);
+        this.info = info;
+    }
 
-  public OkCoinFuturesInfoCross getInfo() {
+    public OkCoinFuturesInfoCross getInfo() {
 
-    return info;
-  }
+        return info;
+    }
 }

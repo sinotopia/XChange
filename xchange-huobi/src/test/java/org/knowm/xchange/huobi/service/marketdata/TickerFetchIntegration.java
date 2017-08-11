@@ -15,14 +15,14 @@ import org.knowm.xchange.service.marketdata.MarketDataService;
  */
 public class TickerFetchIntegration {
 
-  @Test
-  public void tickerFetchTest() throws Exception {
+    @Test
+    public void tickerFetchTest() throws Exception {
 
-    Exchange exchange = ExchangeFactory.INSTANCE.createExchange(HuobiExchange.class.getName());
-    MarketDataService marketDataService = exchange.getMarketDataService();
-    Ticker ticker = marketDataService.getTicker(new CurrencyPair("BTC", "CNY"));
-    System.out.println(ticker.toString());
-    assertThat(ticker).isNotNull();
-  }
+        Exchange exchange = ExchangeFactory.INSTANCE.createExchange(HuobiExchange.class.getName());
+        MarketDataService marketDataService = exchange.getMarketDataService();
+        Ticker ticker = marketDataService.getTicker(new CurrencyPair("BTC", "CNY"));
+        System.out.println(ticker.toString());
+        assertThat(ticker).isNotNull();
+    }
 
 }

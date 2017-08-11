@@ -28,76 +28,76 @@ import org.knowm.xchange.service.trade.params.WithdrawFundsParams;
  */
 public interface AccountService extends BaseService {
 
-  /**
-   * Get account info
-   *
-   * @return the AccountInfo object, null if some sort of error occurred. Implementers should log the error.
-   * @throws ExchangeException                     - Indication that the exchange reported some kind of error with the request or response
-   * @throws NotAvailableFromExchangeException     - Indication that the exchange does not support the requested function or data
-   * @throws NotYetImplementedForExchangeException - Indication that the exchange supports the requested function or data, but it has not yet been
-   *                                               implemented
-   * @throws IOException                           - Indication that a networking error occurred while fetching JSON data
-   */
-  AccountInfo getAccountInfo() throws ExchangeException, NotAvailableFromExchangeException, NotYetImplementedForExchangeException, IOException;
+    /**
+     * Get account info
+     *
+     * @return the AccountInfo object, null if some sort of error occurred. Implementers should log the error.
+     * @throws ExchangeException                     - Indication that the exchange reported some kind of error with the request or response
+     * @throws NotAvailableFromExchangeException     - Indication that the exchange does not support the requested function or data
+     * @throws NotYetImplementedForExchangeException - Indication that the exchange supports the requested function or data, but it has not yet been
+     *                                               implemented
+     * @throws IOException                           - Indication that a networking error occurred while fetching JSON data
+     */
+    AccountInfo getAccountInfo() throws ExchangeException, NotAvailableFromExchangeException, NotYetImplementedForExchangeException, IOException;
 
-  /**
-   * Convenience method, typically just delegates to withdrawFunds(WithdrawFundsParams params)
-   *
-   * @param currency The currency to withdraw
-   * @param amount The amount to withdraw
-   * @param address The destination address
-   * @return The result of the withdrawal (usually a transaction ID)
-   * @throws ExchangeException                     - Indication that the exchange reported some kind of error with the request or response
-   * @throws NotAvailableFromExchangeException     - Indication that the exchange does not support the requested function or data
-   * @throws NotYetImplementedForExchangeException - Indication that the exchange supports the requested function or data, but it has not yet been
-   *                                               implemented
-   * @throws IOException                           - Indication that a networking error occurred while fetching JSON data
-   */
-  String withdrawFunds(Currency currency, BigDecimal amount,
-      String address) throws ExchangeException, NotAvailableFromExchangeException, NotYetImplementedForExchangeException, IOException;
+    /**
+     * Convenience method, typically just delegates to withdrawFunds(WithdrawFundsParams params)
+     *
+     * @param currency The currency to withdraw
+     * @param amount   The amount to withdraw
+     * @param address  The destination address
+     * @return The result of the withdrawal (usually a transaction ID)
+     * @throws ExchangeException                     - Indication that the exchange reported some kind of error with the request or response
+     * @throws NotAvailableFromExchangeException     - Indication that the exchange does not support the requested function or data
+     * @throws NotYetImplementedForExchangeException - Indication that the exchange supports the requested function or data, but it has not yet been
+     *                                               implemented
+     * @throws IOException                           - Indication that a networking error occurred while fetching JSON data
+     */
+    String withdrawFunds(Currency currency, BigDecimal amount,
+                         String address) throws ExchangeException, NotAvailableFromExchangeException, NotYetImplementedForExchangeException, IOException;
 
-  /**
-   * Withdraw funds from this account. Allows to withdraw digital currency funds from the exchange account to an external address
-   *
-   * @param params The withdrawl details
-   * @return The result of the withdrawal (usually a transaction ID)
-   * @throws ExchangeException                     - Indication that the exchange reported some kind of error with the request or response
-   * @throws NotAvailableFromExchangeException     - Indication that the exchange does not support the requested function or data
-   * @throws NotYetImplementedForExchangeException - Indication that the exchange supports the requested function or data, but it has not yet been
-   *                                               implemented
-   * @throws IOException                           - Indication that a networking error occurred while fetching JSON data
-   */
-  String withdrawFunds(WithdrawFundsParams params) throws ExchangeException, NotAvailableFromExchangeException, NotYetImplementedForExchangeException, IOException;
+    /**
+     * Withdraw funds from this account. Allows to withdraw digital currency funds from the exchange account to an external address
+     *
+     * @param params The withdrawl details
+     * @return The result of the withdrawal (usually a transaction ID)
+     * @throws ExchangeException                     - Indication that the exchange reported some kind of error with the request or response
+     * @throws NotAvailableFromExchangeException     - Indication that the exchange does not support the requested function or data
+     * @throws NotYetImplementedForExchangeException - Indication that the exchange supports the requested function or data, but it has not yet been
+     *                                               implemented
+     * @throws IOException                           - Indication that a networking error occurred while fetching JSON data
+     */
+    String withdrawFunds(WithdrawFundsParams params) throws ExchangeException, NotAvailableFromExchangeException, NotYetImplementedForExchangeException, IOException;
 
-  /**
-   * Request a digital currency address to fund this account. Allows to fund the exchange account with digital currency from an external address
-   *
-   * @param currency The digital currency that corresponds to the desired deposit address.
-   * @param args
-   * @return the internal deposit address to send funds to
-   * @throws ExchangeException                     - Indication that the exchange reported some kind of error with the request or response
-   * @throws NotAvailableFromExchangeException     - Indication that the exchange does not support the requested function or data
-   * @throws NotYetImplementedForExchangeException - Indication that the exchange supports the requested function or data, but it has not yet been
-   *                                               implemented
-   * @throws IOException                           - Indication that a networking error occurred while fetching JSON data
-   */
-  String requestDepositAddress(Currency currency,
-      String... args) throws ExchangeException, NotAvailableFromExchangeException, NotYetImplementedForExchangeException, IOException;
+    /**
+     * Request a digital currency address to fund this account. Allows to fund the exchange account with digital currency from an external address
+     *
+     * @param currency The digital currency that corresponds to the desired deposit address.
+     * @param args
+     * @return the internal deposit address to send funds to
+     * @throws ExchangeException                     - Indication that the exchange reported some kind of error with the request or response
+     * @throws NotAvailableFromExchangeException     - Indication that the exchange does not support the requested function or data
+     * @throws NotYetImplementedForExchangeException - Indication that the exchange supports the requested function or data, but it has not yet been
+     *                                               implemented
+     * @throws IOException                           - Indication that a networking error occurred while fetching JSON data
+     */
+    String requestDepositAddress(Currency currency,
+                                 String... args) throws ExchangeException, NotAvailableFromExchangeException, NotYetImplementedForExchangeException, IOException;
 
-  /**
-   * Create {@link TradeHistoryParams} object specific to this exchange. Object created by this method may be used to discover supported and required
-   * {@link #getFundingHistory(TradeHistoryParams)} parameters and should be passed only to the method in the same class as the
-   * createFundingHistoryParams that created the object.
-   */
-  TradeHistoryParams createFundingHistoryParams();
+    /**
+     * Create {@link TradeHistoryParams} object specific to this exchange. Object created by this method may be used to discover supported and required
+     * {@link #getFundingHistory(TradeHistoryParams)} parameters and should be passed only to the method in the same class as the
+     * createFundingHistoryParams that created the object.
+     */
+    TradeHistoryParams createFundingHistoryParams();
 
-  /**
-   * @return list of funding history if available or an empty list otherwise. This should never return null.
-   * @throws ExchangeException
-   * @throws NotAvailableFromExchangeException
-   * @throws NotYetImplementedForExchangeException
-   * @throws IOException
-   */
-  List<FundingRecord> getFundingHistory(
-      TradeHistoryParams params) throws ExchangeException, NotAvailableFromExchangeException, NotYetImplementedForExchangeException, IOException;
+    /**
+     * @return list of funding history if available or an empty list otherwise. This should never return null.
+     * @throws ExchangeException
+     * @throws NotAvailableFromExchangeException
+     * @throws NotYetImplementedForExchangeException
+     * @throws IOException
+     */
+    List<FundingRecord> getFundingHistory(
+            TradeHistoryParams params) throws ExchangeException, NotAvailableFromExchangeException, NotYetImplementedForExchangeException, IOException;
 }

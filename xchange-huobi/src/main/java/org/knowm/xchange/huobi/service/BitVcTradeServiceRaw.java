@@ -16,58 +16,58 @@ import org.knowm.xchange.huobi.dto.trade.HuobiPlaceOrderResult;
 
 public class BitVcTradeServiceRaw extends BitVcBaseTradeService implements TradeServiceRaw {
 
-  /**
-   * Constructor
-   *
-   * @param exchange
-   */
-  public BitVcTradeServiceRaw(Exchange exchange) {
-    super(exchange);
-  }
+    /**
+     * Constructor
+     *
+     * @param exchange
+     */
+    public BitVcTradeServiceRaw(Exchange exchange) {
+        super(exchange);
+    }
 
-  @Override
-  public HuobiOrder[] getOrders(int coinType) throws IOException {
+    @Override
+    public HuobiOrder[] getOrders(int coinType) throws IOException {
 
-    HuobiOrderResult orders = bitvc.getOrders(accessKey, coinType, nextCreated(), digest);
+        HuobiOrderResult orders = bitvc.getOrders(accessKey, coinType, nextCreated(), digest);
 
-    return orders.getOrders();
-  }
+        return orders.getOrders();
+    }
 
-  @Override
-  public HuobiOrderInfo getOrderInfo(long orderId, int coinType) throws NotYetImplementedForExchangeException {
-    throw new NotYetImplementedForExchangeException();
-  }
+    @Override
+    public HuobiOrderInfo getOrderInfo(long orderId, int coinType) throws NotYetImplementedForExchangeException {
+        throw new NotYetImplementedForExchangeException();
+    }
 
-  public HuobiOrder getBitVcOrder(int coinType, long id) throws IOException {
-    return bitvc.getOrder(accessKey, coinType, nextCreated(), digest, id);
-  }
+    public HuobiOrder getBitVcOrder(int coinType, long id) throws IOException {
+        return bitvc.getOrder(accessKey, coinType, nextCreated(), digest, id);
+    }
 
-  @Override
-  public HuobiPlaceOrderResult placeLimitOrder(OrderType type, int coinType, BigDecimal price, BigDecimal amount) throws IOException {
+    @Override
+    public HuobiPlaceOrderResult placeLimitOrder(OrderType type, int coinType, BigDecimal price, BigDecimal amount) throws IOException {
 
-    final String method = type == BID ? "buy" : "sell";
+        final String method = type == BID ? "buy" : "sell";
 
-    final HuobiPlaceOrderResult result;
+        final HuobiPlaceOrderResult result;
 
-    result = bitvc.placeLimitOrder(accessKey, amount.toPlainString(), coinType, nextCreated(), price.toPlainString(), digest, method);
-    return result;
-  }
+        result = bitvc.placeLimitOrder(accessKey, amount.toPlainString(), coinType, nextCreated(), price.toPlainString(), digest, method);
+        return result;
+    }
 
-  @Override
-  public HuobiPlaceOrderResult placeMarketOrder(OrderType type, int coinType, BigDecimal amount) throws IOException {
+    @Override
+    public HuobiPlaceOrderResult placeMarketOrder(OrderType type, int coinType, BigDecimal amount) throws IOException {
 
-    final String method = type == BID ? "buy_market" : "sell_market";
+        final String method = type == BID ? "buy_market" : "sell_market";
 
-    final HuobiPlaceOrderResult result;
+        final HuobiPlaceOrderResult result;
 
-    result = bitvc.placeMarketOrder(accessKey, amount.toPlainString(), coinType, nextCreated(), digest, method);
+        result = bitvc.placeMarketOrder(accessKey, amount.toPlainString(), coinType, nextCreated(), digest, method);
 
-    return result;
-  }
+        return result;
+    }
 
-  @Override
-  public HuobiCancelOrderResult cancelOrder(int coinType, long id) throws IOException {
+    @Override
+    public HuobiCancelOrderResult cancelOrder(int coinType, long id) throws IOException {
 
-    return bitvc.cancelOrder(accessKey, coinType, nextCreated(), id, digest, id);
-  }
+        return bitvc.cancelOrder(accessKey, coinType, nextCreated(), id, digest, id);
+    }
 }

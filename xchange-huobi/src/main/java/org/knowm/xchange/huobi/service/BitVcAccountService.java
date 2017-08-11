@@ -18,45 +18,45 @@ import org.knowm.xchange.service.trade.params.WithdrawFundsParams;
 
 public class BitVcAccountService extends BitVcAccountServiceRaw implements AccountService {
 
-  /**
-   * Constructor
-   *
-   * @param exchange
-   */
-  public BitVcAccountService(Exchange exchange) {
-    super(exchange);
-  }
+    /**
+     * Constructor
+     *
+     * @param exchange
+     */
+    public BitVcAccountService(Exchange exchange) {
+        super(exchange);
+    }
 
-  @Override
-  public AccountInfo getAccountInfo() throws IOException {
-    return new AccountInfo(HuobiAdapters.adaptWallet(getBitVcAccountInfo()));
-  }
+    @Override
+    public AccountInfo getAccountInfo() throws IOException {
+        return new AccountInfo(HuobiAdapters.adaptWallet(getBitVcAccountInfo()));
+    }
 
-  @Override
-  public String withdrawFunds(Currency currency, BigDecimal amount, String address) {
+    @Override
+    public String withdrawFunds(Currency currency, BigDecimal amount, String address) {
 
-    throw new NotAvailableFromExchangeException();
-  }
+        throw new NotAvailableFromExchangeException();
+    }
 
-  @Override
-  public String withdrawFunds(WithdrawFundsParams params) throws ExchangeException, NotAvailableFromExchangeException, NotYetImplementedForExchangeException, IOException {
-    throw new NotAvailableFromExchangeException();
-  }
+    @Override
+    public String withdrawFunds(WithdrawFundsParams params) throws ExchangeException, NotAvailableFromExchangeException, NotYetImplementedForExchangeException, IOException {
+        throw new NotAvailableFromExchangeException();
+    }
 
-  @Override
-  public String requestDepositAddress(Currency currency, String... args) {
+    @Override
+    public String requestDepositAddress(Currency currency, String... args) {
 
-    throw new NotAvailableFromExchangeException();
-  }
+        throw new NotAvailableFromExchangeException();
+    }
 
-  @Override
-  public TradeHistoryParams createFundingHistoryParams() {
-    throw new NotAvailableFromExchangeException();
-  }
+    @Override
+    public TradeHistoryParams createFundingHistoryParams() {
+        throw new NotAvailableFromExchangeException();
+    }
 
-  @Override
-  public List<FundingRecord> getFundingHistory(
-      TradeHistoryParams params) throws ExchangeException, NotAvailableFromExchangeException, NotYetImplementedForExchangeException, IOException {
-    throw new NotYetImplementedForExchangeException();
-  }
+    @Override
+    public List<FundingRecord> getFundingHistory(
+            TradeHistoryParams params) throws ExchangeException, NotAvailableFromExchangeException, NotYetImplementedForExchangeException, IOException {
+        throw new NotYetImplementedForExchangeException();
+    }
 }
